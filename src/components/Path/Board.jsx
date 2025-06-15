@@ -20,24 +20,35 @@ export const Board = () => {
             return;
         }
         if (!path.sourceIndex.length) {
-            setPathGrid((prevGrid) => prevGrid.map((row, rowIndex) => row.map((cell, colIndex) => rowIndex === index[0] && colIndex === index[1] ? 1 : cell)));
             setPath({...path, sourceIndex: index});
             return;
         }
-        setPathGrid((prevGrid) => prevGrid.map((row, rowIndex) => row.map((cell, colIndex) => rowIndex === index[0] && colIndex === index[1] ? 1 : cell)));
         setPath({...path, destinationIndex: index});
     };
 
     const handleGridDrag = (index) => {
-        if (!path.sourceIndex.length || !path.destinationIndex.length || (index[0] === path.sourceIndex[0] && index[1] === path.sourceIndex[1]) || (index[0] === path.destinationIndex[0] && index[1] === path.destinationIndex[1])) {
+        if (!path.sourceIndex.length ||
+            !path.destinationIndex.length ||
+            (index[0] === path.sourceIndex[0] && index[1] === path.sourceIndex[1]) ||
+            (index[0] === path.destinationIndex[0] && index[1] === path.destinationIndex[1])
+        ) {
             return;
         }
-        setPathGrid((prevGrid) => prevGrid.map((row, rowIndex) => row.map((cell, colIndex) => rowIndex === index[0] && colIndex === index[1] ? 0 : cell)));
+        setPathGrid((prevGrid) =>
+            prevGrid.map((row, rowIndex) =>
+                row.map((cell, colIndex) =>
+                    rowIndex === index[0] && colIndex === index[1] ? 0 : cell
+                )
+            )
+        );
         setMovingIndex(index);
     };
 
     const isSourceOrDestination = (index) => {
-        return ((path.sourceIndex[0] === index[0] && path.sourceIndex[1] === index[1]) || (path.destinationIndex[0] === index[0] && path.destinationIndex[1] === index[1]));
+        return (
+            (path.sourceIndex[0] === index[0] && path.sourceIndex[1] === index[1]) ||
+            (path.destinationIndex[0] === index[0] && path.destinationIndex[1] === index[1])
+        );
     };
 
     const isBlocked = (index) => {
@@ -48,7 +59,8 @@ export const Board = () => {
         if (!sPath.calculatedPath) return
         let flag = false;
         for (let [row, col] of sPath.calculatedPath) {
-            if ((index[0] === path.sourceIndex[0] && index[1] === path.sourceIndex[1]) || (index[0] === path.destinationIndex[0] && index[1] === path.destinationIndex[1])) {
+            if ((index[0] === path.sourceIndex[0] && index[1] === path.sourceIndex[1]) ||
+                (index[0] === path.destinationIndex[0] && index[1] === path.destinationIndex[1])) {
                 return;
             }
             if (row === index[0] && col === index[1]) {
@@ -60,7 +72,8 @@ export const Board = () => {
 
     const calculate = () => {
         if (!path.sourceIndex.length) return
-        const shortestPath = GetShortestPath(pathGrid, path.sourceIndex, path.destinationIndex);
+        const shortestPath =
+            GetShortestPath(pathGrid, path.sourceIndex, path.destinationIndex);
 
         setShortestPath({calculatedPath: shortestPath[0], distance: shortestPath[1]});
     };
@@ -87,23 +100,23 @@ export const Board = () => {
         return null; // fallback if needed
     };
 
-    return (<div>
+    return (
+        <div>
             <div className="mx-10 my-10">
                 {pathGrid.map((row, rowIndex) => (<div key={rowIndex} className="flex flex-row justify-center">
-                        {row.map((col, colIndex) => (<div key={colIndex} className="mx-1 my-0 lg:mx-2 lg:my-2 ">
-                                // TODO Make this modular or move to props
-                                <button
-                                    key={`${rowIndex}-${colIndex}`}
-                                    onMouseMove={() => handleGridDrag([rowIndex, colIndex])}
-                                    onClick={() => handleGridClick([rowIndex, colIndex])}
-                                    className={`rounded-sm bg-gray-100 shadow-xl active:shadow-xl/3 w-5 h-5 md:w-10 md:h-10 lg:w-10 lg:h-10
+                    {row.map((col, colIndex) => (<div key={colIndex} className="mx-1 my-0 lg:mx-2 lg:my-2 ">
+                        <button
+                            key={`${rowIndex}-${colIndex}`}
+                            onMouseMove={() => handleGridDrag([rowIndex, colIndex])}
+                            onClick={() => handleGridClick([rowIndex, colIndex])}
+                            className={`rounded-sm bg-gray-100 shadow-xl active:shadow-xl/3 w-5 h-5 md:w-10 md:h-10 lg:w-10 lg:h-10
                                    ${isSourceOrDestination([rowIndex, colIndex]) ? "bg-gray-900" : ""}
                                    ${isBlocked([rowIndex, colIndex]) || col === 0 ? "bg-gray-400" : ""} 
                                    ${isShortestPathPresent([rowIndex, colIndex]) ? "bg-green-600" : ""} 
                                   ${!isSourceOrDestination([rowIndex, colIndex,]) && !isBlocked([rowIndex, colIndex]) && col !== 0 && !isShortestPathPresent([rowIndex, colIndex]) ? "bg-gray-100" : ""}`}
-                                ></button>
-                            </div>))}
+                        ></button>
                     </div>))}
+                </div>))}
             </div>
             {renderPathMessage()}
             <div className="mt-5">
@@ -122,5 +135,6 @@ export const Board = () => {
                     Clear
                 </button>
             </div>
-        </div>);
+        </div>
+    );
 };
