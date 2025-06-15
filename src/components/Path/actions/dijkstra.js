@@ -80,7 +80,7 @@ export const FindShortestPath = (n, m, edges) => {
         }
     }
     let node = n
-    if(distance[node] === Number.MAX_SAFE_INTEGER) return [-1]
+    if (distance[node] === Number.MAX_SAFE_INTEGER) return [-1]
     let path = []
     while (parent[node] !== node) {
         path.push(node)
