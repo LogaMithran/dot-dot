@@ -71,7 +71,7 @@ export const GetShortestPath = (grid, sourceNode, destinationNode) => {
                             path.push(currentPos)
                             currentPos = parent[currentPos[0]][currentPos[1]]
                         }
-                        return [path.reverse(), adjWeight + 1]
+                        return [path.reverse(), adjWeight]
                     }
                 }
             }
