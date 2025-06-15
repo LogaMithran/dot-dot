@@ -32,6 +32,7 @@ class Queue {
  * @param {number[]} destinationNode
  */
 export const GetShortestPath = (grid, sourceNode, destinationNode) => {
+    console.log(grid)
     let queue = new Queue(), n = grid.length, m = grid[0].length,
         distance = Array.from({length: n}, () => Array(m).fill(Number.MAX_SAFE_INTEGER)),
         parent = Array.from({length: n}, () => Array(m).fill(null)), delRow = [-1, 0, +1, 0], delCOl = [0, +1, 0, -1]
@@ -82,6 +83,10 @@ export const GetShortestPath = (grid, sourceNode, destinationNode) => {
 /**
  * Tests
  */
-let grid = [[1, 1, 1, 1], [1, 1, 0, 1], [1, 1, 1, 1], [1, 1, 0, 0], [1, 0, 0, 1]], source = [0, 1], destination = [2, 2]
+// let grid = [[1, 1, 1, 1], [1, 1, 0, 1], [1, 1, 1, 1], [1, 1, 0, 0], [1, 0, 0, 1]], source = [0, 1], destination = [2, 2]
+
+let grid = [[null, null, null, null, null, null, null, null, null, null, null], [null, null, null, null, null, null, null, null, null, null, null], [null, null, null, 0, null, null, null, null, null, null, null], [null, null, null, null, null, null, 0, null, null, null, null], [null, null, null, null, null, null, null, null, null, null, null], [null, 1, null, null, null, null, null, null, null, null, null], [null, null, null, null, null, null, null, null, null, null, null], [null, null, 0, null, null, null, null, null, null, null, null], [null, null, null, null, null, null, 1, null, null, null, null], [null, null, null, null, null, null, null, null, null, null, null], [null, null, null, null, null, null, null, null, null, null, null]],
+    source = [5, 1],
+    destination = [8, 6]
 
 GetShortestPath(grid, source, destination)
