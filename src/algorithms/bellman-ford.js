@@ -31,8 +31,11 @@ export const BellmanFord = (V, edges, source, destination) => {
         node = parent[node]
     }
     path.push(source)
-    console.log(parent, path)
+    console.log(parent, path, distance)
     console.log(edges)
+    if (distance[node] === 1e8) {
+        return [[-1], [-1]]
+    }
     if (path.length === 1 && path[0] === source) {
         path.push(destination)
         return [distance, path]
