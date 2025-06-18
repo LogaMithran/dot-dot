@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {GetShortestPath} from "./actions/shortestDistance";
+import {GetShortestPath} from "../../algorithms/shortestDistance.js";
 
 const ROWS = 11;
 const COLS = 11;
