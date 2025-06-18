@@ -13,7 +13,7 @@ export default function Bellman() {
                 <>
                     <Layout>
                         <Header paraText={para}/>
-                        <Flow/>
+                        <Flow algorithm={"bellman"}/>
                     </Layout>
                 </>
             ) : (<> <p

@@ -17,7 +17,7 @@ export const BellmanFord = (V, edges, source, destination) => {
         for (const edge of edges) {
             let [u, v, wt] = edge
             if (distance[u] !== 1e8 && distance[u] + wt < distance[v]) {
-                if (i === V - 1) return [-1];
+                if (i === V - 1) return -1
                 parent[v] = u
                 distance[v] = distance[u] + wt;
             }
@@ -31,8 +31,6 @@ export const BellmanFord = (V, edges, source, destination) => {
         node = parent[node]
     }
     path.push(source)
-    console.log(parent, path, distance)
-    console.log(edges)
     if (distance[node] === 1e8) {
         return [[-1], [-1]]
     }

@@ -88,8 +88,6 @@ export const FindShortestPath = (n, m, edges) => {
     }
 
     path.push(1)
-    console.log("parent", parent)
-    console.log("distance", distance)
     return path.reverse()
 }
 

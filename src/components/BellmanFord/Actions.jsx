@@ -33,9 +33,7 @@ export default function ({nodes, edges, setEdges, setNodes}) {
                 result.push([u, v, weight]);
             }
         }
-        console.log(nodes, edges)
         return BellmanFord(nodes.length, result, sourceDestination.source, sourceDestination.destination)
-
     }
 
     const resetBeforeCalculate = () => {
@@ -57,15 +55,14 @@ export default function ({nodes, edges, setEdges, setNodes}) {
         }
         const response = buildAdjacencyList()
 
-        const path = response[1]
-        console.log(path)
-        if (path[0] === -1) {
+        if (response === -1) {
             setError({
                 status: true,
-                message: "Path cannot be reached"
+                message: "Destination ends up in a cycle"
             })
             return
         }
+        const path = response[1]
         for (let i = 0; i < path.length; i++) {
             setEdges((edges) =>
                 edges.map((edge) =>
