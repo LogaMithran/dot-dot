@@ -1,0 +1,176 @@
+import React, {useCallback, useRef, useState} from "react";
+import {addEdge, Background, Controls, ReactFlow, useEdgesState, useNodesState, useReactFlow} from "@xyflow/react";
+import {useDnD} from "./DnDContext";
+import Sidebar from "./Sidebar";
+import Actions from "../BellmanFord /Actions.jsx";
+import NodeTypes from "./Nodes/NodeTypes.js";
+import EdgeTypes from "./Edges/EdgeTypes.js";
+
+let id = 0;
+const getId = () => `dndnode_${id++}`;
+
+
+const initialNodes = [];
+
+export const DnDFlow = () => {
+    const reactFlowWrapper = useRef(null);
+    const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+    const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+    const {screenToFlowPosition} = useReactFlow();
+    const [nodeValue, setNodeValue] = useDnD();
+    const [nodeCharCode, setNodeCharCode] = useState(65);
+
+
+    const onConnect = useCallback(
+        (params) => {
+            setEdges((eds) =>
+                addEdge({...params, type: 'buttonedge', animated: true}, eds)
+            );
+        },
+        []
+    );
+
+    const onDragOver = useCallback((event) => {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'move';
+    }, []);
+
+    const onDrop = useCallback(
+        (event) => {
+            console.log("On drop called")
+            event.preventDefault();
+
+            const position = screenToFlowPosition({
+                x: event.clientX,
+                y: event.clientY,
+            });
+            const newNode = {
+                id: getId(),
+                position,
+                type: 'textUpdater',
+                data: { label: data.label },
+            };
+            setNodeCharCode((code) => code + 1);
+            setNodes((nds) => nds.concat(newNode));
+        },
+        [screenToFlowPosition, nodeValue],
+    );
+
+    const onDragStart = (event, nodeType) => {
+        event.dataTransfer.setData('text/plain', nodeType);
+        event.dataTransfer.effectAllowed = 'move';
+    };
+
+    return (
+        <>
+            <div className="dndflow">
+                <div className="reactflow-wrapper" ref={reactFlowWrapper}>
+                    <ReactFlow
+                        nodes={nodes}
+                        edges={edges}
+                        onNodesChange={onNodesChange}
+                        onEdgesChange={onEdgesChange}
+                        onConnect={onConnect}
+                        edgeTypes={EdgeTypes}
+                        nodeTypes={NodeTypes}
+                        onDrop={onDrop}
+                        onDragStart={onDragStart}
+                        onDragOver={onDragOver}
+                        fitView
+                        style={{backgroundColor: '#F7F9FB'}}
+                    >
+                        <Controls/>
+                        <Background/>
+                    </ReactFlow>
+                </div>
+                <Sidebar/>
+            </div>
+            <Actions nodes={nodes} edges={edges} setEdges={setEdges} setNodes={setNodes}/>
+        </>
+    );
+};
+
+
+
+
+
+
+[
+  {
+    "id": "dndnode_0",
+    "position": {
+      "x": -340.57674705099134,
+      "y": 244.58120490945961
+    },
+    "type": "textUpdater",
+    "data": {
+      "label": "A"
+    },
+    "measured": {
+      "width": 70,
+      "height": 70
+    },
+    "selected": false,
+    "dragging": false
+  },
+  {
+    "id": "dndnode_1",
+    "position": {
+      "x": -213.97487536911444,
+      "y": 141.08919869332212
+    },
+    "type": "textUpdater",
+    "data": {
+      "label": "B"
+    },
+    "measured": {
+      "width": 70,
+      "height": 70
+    }
+  },
+  {
+    "id": "dndnode_2",
+    "position": {
+      "x": -208.44860319252456,
+      "y": 371.6854649710265
+    },
+    "type": "textUpdater",
+    "data": {
+      "label": "C"
+    },
+    "measured": {
+      "width": 70,
+      "height": 70
+    }
+  },
+  {
+    "id": "dndnode_3",
+    "position": {
+      "x": -32.11028192133886,
+      "y": 153.6489081855718
+    },
+    "type": "textUpdater",
+    "data": {
+      "label": "D"
+    },
+    "measured": {
+      "width": 70,
+      "height": 70
+    }
+  },
+  {
+    "id": "dndnode_4",
+    "position": {
+      "x": -17.541018910329218,
+      "y": 383.7427860835862
+    },
+    "type": "textUpdater",
+    "data": {
+      "label": "E"
+    },
+    "measured": {
+      "width": 70,
+      "height": 70
+    }
+  }
+]
