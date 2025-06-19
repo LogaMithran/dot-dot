@@ -45,6 +45,25 @@ export default function ({nodes, edges, setEdges, setNodes}) {
             message: ""
         })
     }
+
+    const isError = (response) => {
+        console.log(response, response[0])
+        if (response === -1) {
+            setError({
+                status: true,
+                message: "Destination ends up in a cycle"
+            })
+            return true
+        } else if (response[0][0] === -1) {
+            setError({
+                status: true,
+                message: "Destination cannot be reached"
+            })
+            return true
+        }
+        return false
+    }
+
     const calculate = () => {
         resetBeforeCalculate()
         if (sourceDestination.destination >= nodes.length) {
@@ -54,12 +73,7 @@ export default function ({nodes, edges, setEdges, setNodes}) {
             })
         }
         const response = buildAdjacencyList()
-
-        if (response === -1) {
-            setError({
-                status: true,
-                message: "Destination ends up in a cycle"
-            })
+        if (isError(response)) {
             return
         }
         const path = response[1]

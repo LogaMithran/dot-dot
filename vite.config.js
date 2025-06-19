@@ -10,6 +10,6 @@ export default defineConfig({
         historyApiFallback: true,
         strictPort: true, cors: true,
         // Use this for port forwarding (Only for local development)
-        allowedHosts: ["0fb2-2406-7400-c8-2677-e07f-264f-9c06-23cf.ngrok-free.app"]
+        allowedHosts: ["4e32-61-16-134-190.ngrok-free.app"]
     }
 })

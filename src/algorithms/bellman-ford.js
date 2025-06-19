@@ -38,6 +38,7 @@ export const BellmanFord = (V, edges, source, destination) => {
         path.push(destination)
         return [distance, path]
     }
+    console.log(distance, parent)
     return [distance, path.reverse()]
 }
 
@@ -45,4 +46,4 @@ export const BellmanFord = (V, edges, source, destination) => {
 let V = 5, edge = [[1, 3, 2], [4, 3, -1], [2, 4, 1], [1, 2, 1], [0, 1, 5]], src = 0
 
 
-console.log(BellmanFord(V, edge, src, 2))
+// console.log(BellmanFord(V, edge, src, 2))
