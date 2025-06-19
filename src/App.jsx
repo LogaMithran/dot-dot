@@ -4,6 +4,7 @@ import {lazy, Suspense} from "react";
 import {Landing} from "./components/Landing.jsx";
 import NotFound from "./components/NotFound.jsx";
 import FloydWarshall from "./components/FloydWarshall/index.jsx";
+import Loader from "./components/Shared/Loader.jsx";
 
 const Dijkstra = lazy(() => import("./components/Dijkstra/Dijkstra.jsx"))
 
@@ -17,7 +18,7 @@ function App() {
                 <Route
                     path="dijkstra"
                     element={
-                        <Suspense fallback={<NotFound/>}>
+                        <Suspense fallback={<Loader/>}>
                             <Dijkstra/>
                         </Suspense>
                     }
@@ -25,7 +26,7 @@ function App() {
                 <Route
                     path="bellman"
                     element={
-                        <Suspense fallback={<NotFound/>}>
+                        <Suspense fallback={<Loader/>}>
                             <BellMan/>
                         </Suspense>
                     }
@@ -33,7 +34,7 @@ function App() {
                 <Route
                     path="floyd"
                     element={
-                        <Suspense fallback={<NotFound/>}>
+                        <Suspense fallback={<Loader/>}>
                             <FloydWarshall/>
                         </Suspense>
                     }

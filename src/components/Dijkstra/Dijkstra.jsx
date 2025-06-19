@@ -2,10 +2,9 @@ import {Board} from "./Board.jsx";
 import Header from "../Shared/Header.jsx";
 import Layout from "../Shared/Layout.jsx";
 
-const para = "Dot {'->'} to Dot is a small application that finds the shortest path between a source node and a destination node. The algorithm used here is Dijkstra's."
+const para = "Dijkstra's algorithm is used for solving the single source shortest path problems where the weights should be non negative and acyclic"
 export default function () {
-    return (
-        <Layout>
+    return (<Layout>
             <Header paraText={para}/>
             <Board/>
         </Layout>

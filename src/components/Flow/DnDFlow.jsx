@@ -5,24 +5,15 @@ import Sidebar from "./Sidebar";
 import Actions from "../BellmanFord/Actions.jsx";
 import NodeTypes from "./Nodes/NodeTypes.js";
 import EdgeTypes from "./Edges/EdgeTypes.js";
-import DefaultNodes from "./Nodes/DefaultNodes.js";
-import defaultEdge from "./Edges/DefaultEdge.js";
 
 let id = 0;
 const getId = () => `dndnode_${id++}`;
 
 
-const initialNodes = [
-    ...DefaultNodes
-];
-
-const initialEdges = [...defaultEdge];
-
-export const DnDFlow = () => {
-    console.log("-------------------")
+export const DnDFlow = ({defaultNodes, defaultEdges}) => {
     const reactFlowWrapper = useRef(null);
-    const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-    const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+    const [nodes, setNodes, onNodesChange] = useNodesState(defaultNodes);
+    const [edges, setEdges, onEdgesChange] = useEdgesState(defaultEdges);
     const {screenToFlowPosition} = useReactFlow();
     const {
         nodeValue

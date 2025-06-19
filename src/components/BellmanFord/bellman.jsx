@@ -3,7 +3,7 @@ import Layout from "../Shared/Layout.jsx";
 import Header from "../Shared/Header.jsx";
 import Flow from "../Flow/index.jsx";
 
-const para = ""
+const para = "Bellman ford algorithm can be used when we have negative weights or when the paths ends up in cycle"
 export default function Bellman() {
     const isMobile = useIsMobile()
 
@@ -13,12 +13,12 @@ export default function Bellman() {
                 <>
                     <Layout>
                         <Header paraText={para}/>
-                        <Flow/>
+                        <Flow algorithm={"bellman"}/>
                     </Layout>
                 </>
             ) : (<> <p
                 className="flex justify-center text-center mx-1 my-2 text-lg font-light text-gray-500 dark:text-gray-400 wrap-break-word text-wrap">The
-                Bellman-Ford Algorithm is best experienced interactively on a laptop browser..</p></>)}
+                Bellman-Ford Algorithm is best experienced interactively on a laptop browser.</p></>)}
         </>
     )
 }

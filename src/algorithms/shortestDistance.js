@@ -32,7 +32,6 @@ class Queue {
  * @param {number[]} destinationNode
  */
 export const GetShortestPath = (grid, sourceNode, destinationNode) => {
-    console.log(grid)
     let queue = new Queue(), n = grid.length, m = grid[0].length,
         distance = Array.from({length: n}, () => Array(m).fill(Number.MAX_SAFE_INTEGER)),
         parent = Array.from({length: n}, () => Array(m).fill(null)), delRow = [-1, 0, +1, 0], delCOl = [0, +1, 0, -1]
@@ -43,7 +42,6 @@ export const GetShortestPath = (grid, sourceNode, destinationNode) => {
 
     for (let i = 0; i < 4; i++) {
         let adjRow = sourceNode[0] + delRow[i], adjCol = sourceNode[1] + delCOl[i]
-        console.log([adjRow, adjCol], sourceNode, destinationNode)
         if (destinationNode[0] === adjRow && destinationNode[1] === adjCol) {
             return [[], 1]
         }
