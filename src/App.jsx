@@ -5,6 +5,7 @@ import {Landing} from "./components/Landing.jsx";
 import NotFound from "./components/NotFound.jsx";
 import FloydWarshall from "./components/FloydWarshall/index.jsx";
 import Loader from "./components/Shared/Loader.jsx";
+import Home from "./components/Home.jsx";
 
 const Dijkstra = lazy(() => import("./components/Dijkstra/Dijkstra.jsx"))
 
@@ -15,6 +16,14 @@ function App() {
     return (
         <Routes>
             <Route path="/" element={<Landing/>}>
+                <Route
+                    path="/"
+                    element={
+                        <Suspense fallback={<Loader/>}>
+                            <Home/>
+                        </Suspense>
+                    }
+                />
                 <Route
                     path="dijkstra"
                     element={

@@ -8,7 +8,7 @@ export const DnDProvider = ({children}) => {
     const [nodeCharCode, setNodeCharCode] = useState(0);
     const [sourceDestination, setSourceDestination] = useState({
         source: 0,
-        destination: 5
+        destination: 1
     })
     const [initEdges, setInitialEdges] = useState([])
 

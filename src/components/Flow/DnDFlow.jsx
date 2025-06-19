@@ -1,4 +1,4 @@
-import React, {useCallback, useRef} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import {addEdge, Background, Controls, ReactFlow, useEdgesState, useNodesState, useReactFlow} from "@xyflow/react";
 import {useDnD} from "./DnDContext";
 import Sidebar from "./Sidebar";
@@ -6,19 +6,30 @@ import Actions from "../BellmanFord/Actions.jsx";
 import NodeTypes from "./Nodes/NodeTypes.js";
 import EdgeTypes from "./Edges/EdgeTypes.js";
 
-let id = 0;
-const getId = () => `dndnode_${id++}`;
-
-
 export const DnDFlow = ({defaultNodes, defaultEdges}) => {
     const reactFlowWrapper = useRef(null);
     const [nodes, setNodes, onNodesChange] = useNodesState(defaultNodes);
     const [edges, setEdges, onEdgesChange] = useEdgesState(defaultEdges);
     const {screenToFlowPosition} = useReactFlow();
     const {
-        nodeValue
+        nodeValue, setSourceDestination, setNodeCharCode, sourceDestination
     } = useDnD();
+    const [id, setNodeId] = useState(nodes.length)
 
+    const getId = () => {
+        const nodeId = `dndnode_${id}`
+        setNodeId((prevState) => prevState + 1)
+        return nodeId
+    };
+
+    useEffect(() => {
+        console.log(sourceDestination, nodes.length)
+        setSourceDestination((prev) => ({
+            ...prev,
+            destination: nodes.length - 1
+        }))
+        setNodeCharCode(nodes.length)
+    }, [nodes]);
 
     const onConnect = useCallback(
         (params) => {
