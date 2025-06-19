@@ -44,7 +44,7 @@ function App() {
                     path="floyd"
                     element={
                         <Suspense fallback={<Loader/>}>
-                            <FloydWarshall/>
+                            <span className="mx-5">WIP</span>
                         </Suspense>
                     }
                 />
