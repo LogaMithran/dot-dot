@@ -40,14 +40,6 @@ function App() {
                         </Suspense>
                     }
                 />
-                <Route
-                    path="floyd"
-                    element={
-                        <Suspense fallback={<Loader/>}>
-                            <span className="mx-5">WIP</span>
-                        </Suspense>
-                    }
-                />
                 <Route path="*" element={<NotFound/>}/>
             </Route>
         </Routes>
