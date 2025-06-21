@@ -7,7 +7,7 @@ export default function ({heading, headingHighlight, paraText}) {
                     <span className="text-blue-600 dark:text-blue-500">{headingHighlight}</span>
                 </h1>)}
 
-            <p className="my-2 text-lg text-gray-500 ">{paraText}</p>
+            <p className="text-lg text-gray-500 ">{paraText}</p>
         </div>
     )
 }

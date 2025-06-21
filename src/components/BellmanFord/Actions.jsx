@@ -99,8 +99,8 @@ export default function ({nodes, edges, setEdges, setNodes}) {
     }
 
     return <div>
-        {error.status && (<div className="mx-5 my-2 px-10">{error.message}</div>)}
-        <div className="mx-5 my-5 px-5 sm:mx-2 sm:my-2 md:mx-2 md:my-2 lg:mx-10 lg:my-10">
+        {error.status && (<div className="my-2">{error.message}</div>)}
+        <div className="my-5 sm:my-2 md:my-2">
             <button type="button"
                     className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
                     onClick={calculate}
