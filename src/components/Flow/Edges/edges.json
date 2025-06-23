@@ -175,5 +175,161 @@
       },
       "label": 4
     }
+  ],
+  "kruskal": [
+    {
+      "source": "dndnode_0",
+      "target": "dndnode_1",
+      "type": "buttonedge",
+      "animated": true,
+      "id": "xy-edge__dndnode_0-dndnode_1",
+      "selected": false,
+      "data": {
+        "weight": "4"
+      }
+    },
+    {
+      "source": "dndnode_1",
+      "target": "dndnode_2",
+      "type": "buttonedge",
+      "animated": true,
+      "id": "xy-edge__dndnode_1-dndnode_2",
+      "selected": false,
+      "data": {
+        "weight": "8"
+      }
+    },
+    {
+      "source": "dndnode_2",
+      "target": "dndnode_3",
+      "type": "buttonedge",
+      "animated": true,
+      "id": "xy-edge__dndnode_2-dndnode_3",
+      "selected": false,
+      "data": {
+        "weight": "7"
+      }
+    },
+    {
+      "source": "dndnode_3",
+      "target": "dndnode_4",
+      "type": "buttonedge",
+      "animated": true,
+      "id": "xy-edge__dndnode_3-dndnode_4",
+      "selected": false,
+      "data": {
+        "weight": "9"
+      }
+    },
+    {
+      "source": "dndnode_4",
+      "target": "dndnode_5",
+      "type": "buttonedge",
+      "animated": true,
+      "id": "xy-edge__dndnode_4-dndnode_5",
+      "selected": false,
+      "data": {
+        "weight": "10"
+      }
+    },
+    {
+      "source": "dndnode_3",
+      "target": "dndnode_5",
+      "type": "buttonedge",
+      "animated": true,
+      "id": "xy-edge__dndnode_3-dndnode_5",
+      "selected": false,
+      "data": {
+        "weight": "14"
+      }
+    },
+    {
+      "source": "dndnode_5",
+      "target": "dndnode_6",
+      "type": "buttonedge",
+      "animated": true,
+      "id": "xy-edge__dndnode_5-dndnode_6",
+      "selected": false,
+      "data": {
+        "weight": "2"
+      }
+    },
+    {
+      "source": "dndnode_6",
+      "target": "dndnode_7",
+      "type": "buttonedge",
+      "animated": true,
+      "id": "xy-edge__dndnode_6-dndnode_7",
+      "selected": false,
+      "data": {
+        "weight": "1"
+      }
+    },
+    {
+      "source": "dndnode_7",
+      "target": "dndnode_0",
+      "type": "buttonedge",
+      "animated": true,
+      "id": "xy-edge__dndnode_7-dndnode_0",
+      "selected": false,
+      "data": {
+        "weight": "8"
+      }
+    },
+    {
+      "source": "dndnode_1",
+      "target": "dndnode_7",
+      "type": "buttonedge",
+      "animated": true,
+      "id": "xy-edge__dndnode_1-dndnode_7",
+      "selected": false,
+      "data": {
+        "weight": "11"
+      }
+    },
+    {
+      "source": "dndnode_7",
+      "target": "dndnode_8",
+      "type": "buttonedge",
+      "animated": true,
+      "id": "xy-edge__dndnode_7-dndnode_8",
+      "selected": false,
+      "data": {
+        "weight": "7"
+      }
+    },
+    {
+      "source": "dndnode_2",
+      "target": "dndnode_8",
+      "type": "buttonedge",
+      "animated": true,
+      "id": "xy-edge__dndnode_2-dndnode_8",
+      "selected": false,
+      "data": {
+        "weight": "2"
+      }
+    },
+    {
+      "source": "dndnode_8",
+      "target": "dndnode_6",
+      "type": "buttonedge",
+      "animated": true,
+      "id": "xy-edge__dndnode_8-dndnode_6",
+      "selected": false,
+      "data": {
+        "weight": "6"
+      }
+    },
+    {
+      "source": "dndnode_2",
+      "target": "dndnode_5",
+      "type": "buttonedge",
+      "animated": true,
+      "id": "xy-edge__dndnode_2-dndnode_5",
+      "selected": false,
+      "data": {
+        "weight": "4"
+      }
+    }
   ]
 }

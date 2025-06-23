@@ -21,6 +21,14 @@ export const Landing = () => {
                             Bellman-Ford Algorithm
                         </NavLink>
                     </li>
+                    <li>
+                        <NavLink
+                            to="/kruskal"
+                            className={({isActive}) => isActive ? 'text-black border-b-2 border-black pb-1' : 'border-b-2 border-transparent   hover:border-black hover:text-black pb-1 transition'}
+                        >
+                            Kruskal's algorithm
+                        </NavLink>
+                    </li>
                 </ul>
             </div>
         </nav>
