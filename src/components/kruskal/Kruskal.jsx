@@ -4,7 +4,7 @@ import Header from "../Shared/Header.jsx";
 import {KruskalFlow} from "./kruskalFlow.jsx";
 import KruskalGraph from "./kruskalGraph.jsx";
 
-const para = "Floyd warshall algorithm"
+const para = "Kruskal's algorithm is useful when we need the minimum spanning tree of a connected, undirected and weighted graph"
 
 export const Kruskal = () => {
     const isMobile = useIsMobile()
