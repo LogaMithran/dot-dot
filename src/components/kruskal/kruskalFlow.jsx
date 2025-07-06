@@ -1,8 +1,7 @@
-import React, {useCallback, useEffect, useRef, useState} from "react";
+import React, {useCallback, useEffect, useRef} from "react";
 import {addEdge, Background, Controls, ReactFlow, useEdgesState, useNodesState, useReactFlow} from "@xyflow/react";
 import {useKrusKal} from "./DnDContext";
 import Sidebar from "./Sidebar";
-import Actions from "../BellmanFord/Actions.jsx";
 import NodeTypes from "../Flow/Nodes/NodeTypes.js";
 import EdgeTypes from "../Flow/Edges/EdgeTypes.js";
 import KruskalActions from "./KruskalActions.jsx";
@@ -14,14 +13,12 @@ export const KruskalFlow = ({defaultNodes, defaultEdges}) => {
     const {screenToFlowPosition} = useReactFlow();
 
     const {
-        nodeValue, setNodeCharCode
+        nodeValue, setNodeCharCode, nodeId, setNodeId
     } = useKrusKal();
-    const [id, setNodeId] = useState(nodes.length)
-    console.log(edges, nodes)
     const getId = () => {
-        const nodeId = `dndnode_${id}`
+        const currentNodeId = `dndnode_${nodeId}`
         setNodeId((prevState) => prevState + 1)
-        return nodeId
+        return currentNodeId
     };
 
     useEffect(() => {
