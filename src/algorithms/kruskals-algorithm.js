@@ -45,4 +45,8 @@ export const KruskalsAlgorithm = (v, edges) => {
 
 let v = 3, edges = [[0, 1, 5], [1, 2, 3], [0, 2, 1]]
 
-console.log(KruskalsAlgorithm(v, edges))
+// console.log(KruskalsAlgorithm(v, edges))
+// const ds = new DisjointS(3)
+// console.log(ds.size[1])
+// ds.unionBySize(1,2)
+// console.log(ds.size[2])

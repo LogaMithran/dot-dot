@@ -6,7 +6,7 @@ import {KruskalsAlgorithm} from "../../algorithms/kruskals-algorithm.js";
 
 export default function ({nodes, edges, setEdges, setNodes}) {
 
-    const {setNodeCharCode} = useKrusKal();
+    const {reset} = useKrusKal();
     const [error, setError] = useState({status: false, message: ""})
 
     const buildAdjacencyList = () => {
@@ -37,7 +37,6 @@ export default function ({nodes, edges, setEdges, setNodes}) {
                 result.push([u, v, weight]);
             }
         }
-        console.log(result)
         return KruskalsAlgorithm(nodes.length, result)
     }
 
@@ -58,12 +57,10 @@ export default function ({nodes, edges, setEdges, setNodes}) {
     const calculate = () => {
         resetBeforeCalculate()
         const response = buildAdjacencyList()
-        console.log(response)
         if (isError(response)) {
             return
         }
         const path = response[1]
-        console.log(path)
         for (let i = 0; i < path.length; i++) {
             setEdges((edges) =>
                 edges.map((edge) =>
@@ -77,10 +74,7 @@ export default function ({nodes, edges, setEdges, setNodes}) {
         }
     }
     const clear = () => {
-        setNodes([])
-        setEdges([])
-        setNodeCharCode(0)
-        setError(false)
+        reset()
     }
 
     return <div>
